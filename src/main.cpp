@@ -58,9 +58,15 @@
 
 // Profiles
 #include "profiles/profile_mecanum.h"
-#if defined(ENABLE_MOTOR_5) || defined(ENABLE_DC_MOTOR_3) || defined(ENABLE_DC_MOTOR_4)
+#if defined(ENABLE_MOTOR_5) || defined(ENABLE_DC_MOTOR_3_I2C) || defined(ENABLE_DC_MOTOR_4_I2C)
 #include "profiles/profile_aux_motors.h"
 #endif
+
+#if defined(ENABLE_DC_MOTOR_1_SPI) || defined(ENABLE_DC_MOTOR_2_SPI)
+#include "profiles/profile_DC_over_SPI.h"
+#endif
+
+
 
 // =============================================================================
 // INTER-CORE COMMUNICATION (shared between Core 0 and Core 1)
@@ -203,9 +209,16 @@ void onBleCommand(const char *jsonData, uint16_t length) {
 #endif
   }
 
-  // Route to auxiliary motors (Motor 5, DC Motors 3-4)
-#if defined(ENABLE_MOTOR_5) || defined(ENABLE_DC_MOTOR_3) || defined(ENABLE_DC_MOTOR_4)
+// Route to DC SPI auxiliary motors (DC Motors 1-2)
+#if defined(ENABLE_DC_MOTOR_1_SPI) || defined(ENABLE_DC_MOTOR_2_SPI)
+
+profile_DC_over_SPI_apply(&cmd);
+#endif
+
+// Route to auxiliary motors (Motor 5, DC Motors 3-4)
+#if defined(ENABLE_MOTOR_5 ) || defined(ENABLE_DC_MOTOR_3_I2C) || defined(ENABLE_DC_MOTOR_4_I2C)
   profile_aux_motors_apply(&cmd);
+
 #endif
 }
 
@@ -240,10 +253,16 @@ void onBleConnectionChange(bool connected) {
 
     // Also stop DC motors directly on Core 0 (they don't use Core 1)
     motors_stop_all();
+    
+#if defined(ENABLE_DC_MOTOR_1_SPI) || defined(ENABLE_DC_MOTOR_2_SPI)
+    // Stop auxiliary motors (DC motors on PICO GPIO 6-9)
+    profile_DC_SPI_motors_stop();
+#endif
 
-#if defined(ENABLE_MOTOR_5) || defined(ENABLE_DC_MOTOR_3) || defined(ENABLE_DC_MOTOR_4)
+#if defined(ENABLE_MOTOR_5) || defined(ENABLE_DC_MOTOR_3_I2C) || defined(ENABLE_DC_MOTOR_4_I2C)
     // Stop auxiliary motors (DC motors on MCP23017 U6_2)
     profile_aux_motors_stop();
+
 #endif
   }
 }

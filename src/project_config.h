@@ -234,6 +234,28 @@
 // #define MOTOR_5_MAX_SPEED     2000.0f // Max speed in steps/sec
 // #define MOTOR_5_DIR_INVERT       1    // 1 = normal, -1 = reverse
 
+
+
+// =============================================================================
+// AUXILIARY DC MOTORS (On/off direction via SPI)
+// =============================================================================
+// DC Motors 1 and 2 are controlled via SPI (Pico GPIO pins 6-9).
+// The SPI control allows both ON/OFF directional control and speed control via PWM.
+// The aux slider sets direction, and the magnitude sets speed: positive = forward, negative = reverse,
+// neutral (within deadzone) = motor off. 
+
+
+
+// #define ENABLE_DC_MOTOR_1_SPI     1    // Uncomment to enable DC Motor 1 over SPI
+// #define DC_MOTOR_1_AUX_CHANNEL    0    // Which aux slider controls it (0-5)
+// #define DC_MOTOR_1_DIR_INVERT     1    // 1 = normal, -1 = reverse
+
+// #define ENABLE_DC_MOTOR_2_SPI     1    // Uncomment to enable DC Motor 2 over SPI
+// #define DC_MOTOR_2_AUX_CHANNEL    1    // Which aux slider controls it (0-5)
+// #define DC_MOTOR_2_DIR_INVERT     1    // 1 = normal, -1 = reverse
+
+
+
 // =============================================================================
 // AUXILIARY DC MOTORS (On/off direction via MCP23017 U6_2 Port A)
 // =============================================================================
@@ -242,12 +264,16 @@
 // The aux slider sets direction: positive = forward, negative = reverse,
 // neutral (within deadzone) = motor off (both H-bridge pins LOW).
 
-// #define ENABLE_DC_MOTOR_3              // Uncomment to enable DC Motor 3
+// #define ENABLE_DC_MOTOR_3_I2C          // Uncomment to enable DC Motor 3 over I2C
 // #define DC_MOTOR_3_AUX_CHANNEL    1    // Which aux slider controls it (0-5)
-// #define DC_MOTOR_3_DIR_INVERT     1    // 1 = normal, -1 = reverse
+// #define DC_MOTOR_3_DIR_INVERT     2    // 1 = normal, -1 = reverse
 
-// #define ENABLE_DC_MOTOR_4              // Uncomment to enable DC Motor 4
-// #define DC_MOTOR_4_AUX_CHANNEL    2    // Which aux slider controls it (0-5)
+// #define ENABLE_DC_MOTOR_4_I2C          // Uncomment to enable DC Motor 4 over I2C
+// #define DC_MOTOR_4_AUX_CHANNEL    3    // Which aux slider controls it (0-5)
 // #define DC_MOTOR_4_DIR_INVERT     1    // 1 = normal, -1 = reverse
+
+
+
+
 
 #endif // PROJECT_CONFIG_H

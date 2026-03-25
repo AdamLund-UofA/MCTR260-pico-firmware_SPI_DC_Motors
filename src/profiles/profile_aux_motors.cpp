@@ -32,7 +32,7 @@
 
 #include "project_config.h"
 
-#if defined(ENABLE_MOTOR_5) || defined(ENABLE_DC_MOTOR_3) || defined(ENABLE_DC_MOTOR_4)
+#if defined(ENABLE_MOTOR_5) || defined(ENABLE_DC_MOTOR_3_I2C) || defined(ENABLE_DC_MOTOR_4_I2C)
 
 #include "profile_aux_motors.h"
 #include "drivers/mcp23017.h"
@@ -75,8 +75,9 @@ void profile_aux_motors_apply(const control_command_t *cmd) {
   }
 #endif
 
+
   // --- DC Motor 3 (on/off direction via MCP23017 U6_2) ---
-#ifdef ENABLE_DC_MOTOR_3
+#ifdef ENABLE_DC_MOTOR_3_I2C
   {
     float input = cmd->aux[DC_MOTOR_3_AUX_CHANNEL] * DC_MOTOR_3_DIR_INVERT;
     if (input > AUX_DEADZONE) {
@@ -96,7 +97,7 @@ void profile_aux_motors_apply(const control_command_t *cmd) {
 #endif
 
   // --- DC Motor 4 (on/off direction via MCP23017 U6_2) ---
-#ifdef ENABLE_DC_MOTOR_4
+#ifdef ENABLE_DC_MOTOR_4_I2C
   {
     float input = cmd->aux[DC_MOTOR_4_AUX_CHANNEL] * DC_MOTOR_4_DIR_INVERT;
     if (input > AUX_DEADZONE) {
@@ -121,11 +122,11 @@ void profile_aux_motors_stop() {
   // Motor 5 stop is handled by simple_stepper_stop_all() on Core 1
   // via the g_emergencyStop flag. No action needed here.
 
-#ifdef ENABLE_DC_MOTOR_3
+#ifdef ENABLE_DC_MOTOR_3_I2C
   mcpDCMotor.setBitA(IN_MOT_3P_BIT, false);
   mcpDCMotor.setBitA(IN_MOT_3N_BIT, false);
 #endif
-#ifdef ENABLE_DC_MOTOR_4
+#ifdef ENABLE_DC_MOTOR_4_I2C
   mcpDCMotor.setBitA(IN_MOT_4P_BIT, false);
   mcpDCMotor.setBitA(IN_MOT_4N_BIT, false);
 #endif
