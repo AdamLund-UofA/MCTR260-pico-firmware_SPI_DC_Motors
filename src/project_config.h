@@ -67,7 +67,7 @@
 
 // DC Motor drivers (uncomment ONE if using DC motors)
 // #define MOTOR_DRIVER_DRV8871      // Single H-bridge, 2 PWM pins per motor
-// #define MOTOR_DRIVER_DRV8833      // Dual H-bridge, 2 PWM pins per channel
+#define MOTOR_DRIVER_DRV8833      // Dual H-bridge, 2 PWM pins per channel
 // #define MOTOR_DRIVER_L298N        // Dual H-bridge with enable pins
 
 // Stepper drivers (uncomment ONE if using steppers)
@@ -194,7 +194,7 @@
 #define STEPPER_STEPS_PER_REV 200
 
 // Microstepping divisor (8, 16, 32, 64 for TMC2209)
-#define STEPPER_MICROSTEPPING 8
+#define STEPPER_MICROSTEPPING 4 // was 8
 
 // Maximum step rate (steps per second)
 #define STEPPER_MAX_SPEED 4000.0f
@@ -204,7 +204,7 @@
 
 // Stepper pulse generation interval (microseconds)
 // Lower = faster response, but more CPU usage
-#define STEPPER_PULSE_INTERVAL_US 500
+#define STEPPER_PULSE_INTERVAL_US 210 // was 500
 
 // Speed deadzone - speeds below this are treated as zero (steps/sec)
 #define STEPPER_SPEED_DEADZONE 10.0f
@@ -217,7 +217,7 @@
 #define MOTOR_UPDATE_INTERVAL_MS 20
 
 // Safety timeout - stop motors if no command received
-#define SAFETY_TIMEOUT_MS 2000
+#define SAFETY_TIMEOUT_MS 1000
 
 // Telemetry update rate
 #define TELEMETRY_INTERVAL_MS 500
@@ -246,13 +246,13 @@
 
 
 
-// #define ENABLE_DC_MOTOR_1_SPI     1    // Uncomment to enable DC Motor 1 over SPI
-// #define DC_MOTOR_1_AUX_CHANNEL    0    // Which aux slider controls it (0-5)
-// #define DC_MOTOR_1_DIR_INVERT     1    // 1 = normal, -1 = reverse
+#define ENABLE_DC_MOTOR_1_SPI     1    // Uncomment to enable DC Motor 1 over SPI
+#define DC_MOTOR_1_AUX_CHANNEL    0    // Which aux slider controls it (0-5)
+#define DC_MOTOR_1_DIR_INVERT     1    // 1 = normal, -1 = reverse
 
-// #define ENABLE_DC_MOTOR_2_SPI     1    // Uncomment to enable DC Motor 2 over SPI
-// #define DC_MOTOR_2_AUX_CHANNEL    1    // Which aux slider controls it (0-5)
-// #define DC_MOTOR_2_DIR_INVERT     1    // 1 = normal, -1 = reverse
+#define ENABLE_DC_MOTOR_2_SPI     1    // Uncomment to enable DC Motor 2 over SPI
+#define DC_MOTOR_2_AUX_CHANNEL    1    // Which aux slider controls it (0-5)
+#define DC_MOTOR_2_DIR_INVERT     1    // 1 = normal, -1 = reverse
 
 
 
@@ -265,8 +265,8 @@
 // neutral (within deadzone) = motor off (both H-bridge pins LOW).
 
 // #define ENABLE_DC_MOTOR_3_I2C          // Uncomment to enable DC Motor 3 over I2C
-// #define DC_MOTOR_3_AUX_CHANNEL    1    // Which aux slider controls it (0-5)
-// #define DC_MOTOR_3_DIR_INVERT     2    // 1 = normal, -1 = reverse
+// #define DC_MOTOR_3_AUX_CHANNEL    2    // Which aux slider controls it (0-5)
+// #define DC_MOTOR_3_DIR_INVERT     1    // 1 = normal, -1 = reverse
 
 // #define ENABLE_DC_MOTOR_4_I2C          // Uncomment to enable DC Motor 4 over I2C
 // #define DC_MOTOR_4_AUX_CHANNEL    3    // Which aux slider controls it (0-5)
