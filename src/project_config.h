@@ -249,7 +249,7 @@
 #define ENABLE_DC_MOTOR_1_SPI     1    // Uncomment to enable DC Motor 1 over SPI
 #define DC_MOTOR_1_AUX_CHANNEL    0    // Which aux slider controls it (0-5)
 #define DC_MOTOR_1_DIR_INVERT     1    // 1 = normal, -1 = reverse
-
+ 
 #define ENABLE_DC_MOTOR_2_SPI     1    // Uncomment to enable DC Motor 2 over SPI
 #define DC_MOTOR_2_AUX_CHANNEL    1    // Which aux slider controls it (0-5)
 #define DC_MOTOR_2_DIR_INVERT     1    // 1 = normal, -1 = reverse

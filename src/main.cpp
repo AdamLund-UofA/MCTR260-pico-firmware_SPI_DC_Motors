@@ -216,7 +216,7 @@ profile_DC_over_SPI_apply(&cmd);
 #endif
 
 // Route to auxiliary motors (Motor 5, DC Motors 3-4)
-#if defined(ENABLE_MOTOR_5 ) || defined(ENABLE_DC_MOTOR_3_I2C) || defined(ENABLE_DC_MOTOR_4_I2C)
+#if defined(ENABLE_MOTOR_5) || defined(ENABLE_DC_MOTOR_3_I2C) || defined(ENABLE_DC_MOTOR_4_I2C)
   profile_aux_motors_apply(&cmd);
 
 #endif
