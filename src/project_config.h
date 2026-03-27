@@ -56,10 +56,10 @@
 // BLE advertised name - CHANGE THIS TO RENAME YOUR ROBOT
 // TIP: Include a keyword the app recognizes so your robot appears at the
 //      top of the scan list: robot, rc, pico, mecanum, tank, meca, controller
-#define DEVICE_NAME "TimberBot_RC"
+#define DEVICE_NAME "Optimized_Confusion_RC"
 
 // 6-digit pairing PIN (must match what you enter on the app)
-#define BLE_PASSKEY 123456
+#define BLE_PASSKEY 67 
 
 // =============================================================================
 // MOTOR TYPE SELECTION (Enable one for DC motors, one for steppers)
@@ -194,7 +194,7 @@
 #define STEPPER_STEPS_PER_REV 200
 
 // Microstepping divisor (8, 16, 32, 64 for TMC2209)
-#define STEPPER_MICROSTEPPING 4 // was 8
+#define STEPPER_MICROSTEPPING 4// was 8
 
 // Maximum step rate (steps per second)
 #define STEPPER_MAX_SPEED 4000.0f

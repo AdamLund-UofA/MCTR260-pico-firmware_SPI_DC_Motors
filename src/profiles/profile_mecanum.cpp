@@ -89,7 +89,7 @@ void profile_mecanum_apply(const control_command_t *cmd) {
 
   // Calculate wheel speeds
   WheelSpeeds wheels;
-  mecanum_calculate(vx, vy, omega, speedMult, &wheels);
+  mecanum_calculate(-vx, vy, omega, speedMult, &wheels); //NOTE: Made vx --> -vx to reverse the mecanum strafe direction
 
   // Apply to motors based on type
   bool hasDC = motors_has_dc();
